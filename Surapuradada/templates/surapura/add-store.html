@@ -1,0 +1,73 @@
+{% extends 'surapura_master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block stores %} active {% endblock %}
+  {% include './scripts.html' %}
+        <!--  Row 1 -->
+        {% block content %}
+        
+    
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-11">
+            <div class="card mb-0">
+              <div class="card-body">
+                <br>
+                <h3 class="text-center">Add New <b>{{ brand.brandName }}</b> Store</h3>
+                <form method="post" action="add-store?cId={{ brand.brandId }}">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label name="storeName" class="form-label">Store Name</label>
+                    <input type="text" name="storeName" class="form-control" id="exampleInputtext1">
+                  </div>
+                  <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label name="storeEmail" class="form-label">Store Email</label>
+                          <input type="email" name="storeEmail" class="form-control" id="count" >
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="password" name="storePassword" class="form-label">Store Password</label>
+                            <input type="password" name="storePassword" class="form-control" id="storePassword" >
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label name="storeLocation" class="form-label">Store Location</label>
+                          <input type="text" name="storeLocation" class="form-control" id="storeLocation" >
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label name="storeCity" class="form-label">Store City</label>
+                            <input type="text" name="storeCity" class="form-control" id="storeCity" >
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                      <div class="mb-3 me-3 w-50">
+                        <label for="name" name="managerId" class="form-label">Manager Email</label>
+                        <input type="text" name="managerId" class="form-control" id="exampleInputtext1" aria-describedby="textHelp" value="{{ brand.managerId }}" readonly>
+                      </div>
+                      
+                      <div class="mb-3 w-50">
+                          <label name="storeNum" class="form-label">Store Number</label>
+                          <input type="tel" name="storeNum" class="form-control" id="storeNum" >
+                      </div>
+                  </div>
+                    
+                    <div class="mb-4">
+                      <label name="embedLink" class="form-label">Embed Link</label>
+                      <input type="text" name="embedLink" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Add Store</button>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+  
+
+        {% endblock %}
+        

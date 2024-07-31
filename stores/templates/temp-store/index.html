@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Radio {% block title %}{% endblock %}</title>
+  
+  {% include './scripts.html' %}
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    
+        <div class="brand-logo d-flex align-items-center justify-content-between mt-2">
+          <a href="/" class="text-nowrap logo-img">
+            <img src="{% static '/stoAssets/images/logos/LogoBlack.png' %}" width="180" alt="" />
+          </a>
+          <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+            <li class="nav-item dropdown">
+              
+              <a href="/logout" class="btn btn-outline-primary mx-3 d-block">Logout</a>
+              
+            </li>
+          </ul>
+        </div>
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+        <img src="{{ details.brandId.imagePath.url }}" height="650px" width="500px" style="display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;" />
+                <div class="radioplayer" 
+                data-src="{{ details.storeCode }}" 
+                data-autoplay="true"
+                data-playbutton="true"
+                data-volumeslider="false"
+                data-elapsedtime="false"
+                data-nowplaying="false"
+                data-showplayer="false"
+                data-volume="100"
+                style="display: none;"
+                > </div>
+
+       
+        <div class="py-12 px-12 text-center">
+          <p class="mb-0 fs-4">Designed and Developed by TIGER</p>
+        </div>
+      </div>
+    </div>
+    
+  
+</body>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
+<script>
+//initialise the plugin with the element
+function start() {
+  var store = $('.radioplayer').radiocoPlayer();
+  store.volume(100);
+}
+window.onload = start();
+
+
+    $(window).on("beforeunload", function(e) {
+      e.preventDefault();
+        $.ajax({
+                url: '/logout',
+                method: 'GET',
+            })
+    });
+
+
+</script>
+</html>

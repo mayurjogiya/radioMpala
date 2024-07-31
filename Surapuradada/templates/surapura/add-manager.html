@@ -1,0 +1,55 @@
+{% extends 'surapura_master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block managers %} active {% endblock %}
+  {% include './scripts.html' %}
+        <!--  Row 1 -->
+        {% block content %}
+        
+    
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-11">
+            <div class="card mb-0">
+              <div class="card-body">
+                <br>
+                <h3 class="text-center">Add new Manager</h3>
+                <form action="add-manager" method="post">
+                    {% csrf_token %}
+                  <div class="mb-3">
+                    <label name="managerName" class="form-label">Manager Name</label>
+                    <input type="text" name="managerName" class="form-control" id="exampleInputtext1" aria-describedby="textHelp" required>
+                  </div>
+                  <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label name="managerEmail" class="form-label">Email</label>
+                          <input type="email" name="managerEmail" class="form-control" id="count" required>
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label name="managerPassword" class="form-label">Password</label>
+                            <input type="password" name="managerPassword" class="form-control" id="password" required>
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label name="brandName" class="form-label">Brand Name</label>
+                          <input type="text" name="brandName" class="form-control" id="brandName" required>
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label name="managerContact" class="form-label">Contact No</label>
+                            <input type="tel" name="managerContact" class="form-control" id="mobile" required>
+                        </div>
+                    </div>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Add Manager</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+  
+
+        {% endblock %}
+        

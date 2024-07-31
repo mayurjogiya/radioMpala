@@ -1,0 +1,64 @@
+{% extends 'surapura_master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block stores %} active {% endblock %}
+  {% include './scripts.html' %}
+        <!--  Row 1 -->
+        {% block content %}
+        
+    
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-11">
+            <div class="card mb-0">
+              <div class="card-body">
+                <br>
+                <h3 class="text-center">Add New Client</h3>
+                <form method="post" action="add-brand" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label name="storeName" class="form-label">Client Name</label>
+                    <input type="text" name="storeName" class="form-control" id="exampleInputtext1">
+                  </div>
+                  <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label for="count" name="storeCount" class="form-label">Store Count</label>
+                          <input type="number" name="storeCount" class="form-control" id="count" >
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="price" name="storePrice" class="form-label">Store Price</label>
+                            <input type="number" name="storePrice" class="form-control" id="price" >
+                        </div>
+                    </div>
+                    <div style="display: flex;">
+                        <div class="mb-3 me-3 w-50">
+                          <label for="count" name="startDate" class="form-label">Start Date</label>
+                          <input type="date" name="startDate" class="form-control" id="count" >
+                        </div>
+                        <div class="mb-3 w-50">
+                            <label for="price" name="embedLink" class="form-label">Embed Link</label>
+                            <input type="text" name="embedLink" class="form-control" id="price" >
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" name="managerId" class="form-label">Manager Id</label>
+                        <input type="text" name="managerId" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    </div>
+                  <div class="mb-4">
+                    <label name="brandLogo" class="form-label">Upload Logo</label>
+                    <input type="file" name="brandLogo" class="form-control" id="exampleInputPassword1" >
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Add Brand</button>
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+  
+
+        {% endblock %}
+        

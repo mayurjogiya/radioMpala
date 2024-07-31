@@ -1,0 +1,27 @@
+{% extends 'surapura_master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block stores %} active {% endblock %}
+  {% include './scripts.html' %}
+        <!--  Row 1 -->
+        {% block content %}
+
+        <button type="button" class="btn btn-primary mb-4" onclick="location.href='add-brand'">Add New</button>
+        {% for client in clients %}
+
+        <div class="col-sm-6 col-xl-3">
+          <div class="card overflow-hidden rounded-2">
+            <div class="position-relative">
+              <a href="show-stores?sId={{ client.brandId }}"><img src="{{ client.imagePath.url }} " class="card-img-top rounded-0" ></a>
+              <a href="show-stores?sId={{ client.brandId }}" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a></div>
+            <div class="card-body pt-3 p-4">
+              <h6 class="fw-semibold fs-4">{{ client.brandName }}</h6>
+              
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endblock %}
+        

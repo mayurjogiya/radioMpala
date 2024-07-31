@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block listen %} active {% endblock %}
+  {% include './scripts.html' %}<!doctype html>
+
+  <!--  Body Wrapper -->
+  {% block content %}
+        <img src="{{ details.imagePath.url }}" height="650px" width="500px" style="display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;" />
+                <div class="radioplayer" 
+                data-src="{{ details.embedLink }}" 
+                data-autoplay="true"
+                data-playbutton="true"
+                data-volumeslider="false"
+                data-elapsedtime="false"
+                data-nowplaying="false"
+                data-showplayer="false"
+                data-volume="100"
+                style="display: none;"
+                > </div>
+
+       
+        
+      </div>
+    </div>
+    
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://public.radio.co/playerapi/jquery.radiocoplayer.min.js"></script>
+<script>
+//initialise the plugin with the element
+function start() {
+  var store = $('.radioplayer').radiocoPlayer();
+  store.volume(100);
+}
+window.onload = start();
+
+
+    </script>
+{% endblock %}

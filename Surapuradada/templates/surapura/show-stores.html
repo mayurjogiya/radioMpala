@@ -1,0 +1,79 @@
+{% extends 'surapura_master.html' %}
+
+{% load static %}
+
+{% block title %} MPala Radio {% endblock %}</title>
+{% block stores %} active {% endblock %}
+  {% include './scripts.html' %}
+        <!--  Row 1 -->
+        {% block content %}
+        
+        <div class="row">
+         
+          <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+              <div class="card-body p-4">
+                <div class="p-3">
+                    <h5 style="display: inline;" class="card-title fw-semibold mb-4 mt-4"> <b> {{ brandId.brandName }} </b> Stores</h5>
+                    <button onclick="location.href='add-store?cId={{ brandId.brandId }}'" style="display: inline; float: right; justify-content: baseline;" type="button" class="btn btn-primary">Add New</button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">SR</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Store Name</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Store Email</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Active Status</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">No of Days</h6>
+                        </th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      {% for store in Stores %}
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ forloop.counter }}</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">{{ store.storeName}} </h6>
+                            <span class="fw-normal">{{ store.city }}</span>                          
+                        </td>
+                        <td class="border-bottom-0"> 
+                          <p class="mb-0 fw-normal"> {{store.email}} </p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            {% if store.activeStatus %}
+                            <span class="badge bg-success rounded-3 fw-semibold">Active</span>
+                            {% else %}
+                            <span class="badge bg-danger rounded-3 fw-semibold">InActive</span>
+                            {% endif %}
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">{{store.activeDays}} </h6>
+                        </td>
+                      </tr> 
+                      {% endfor %}
+                      
+                                          
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endblock %}
+        
